@@ -1,0 +1,44 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentACarWPFProject.Views"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:c="clr-namespace:RentACarWPFProject.Controls.Views"
+        xmlns:ViewModels="clr-namespace:RentACarWPFProject.ViewModels" x:Class="RentACarWPFProject.Views.AdministrationWindow"
+        xmlns:UCViewModels="clr-namespace:RentACarWPFProject.Controls.ViewModels"
+        xmlns:UCViews="clr-namespace:RentACarWPFProject.Controls.Views"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Background="#2e3137"
+        Title="AdministrationWindow">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type UCViewModels:TreeViewViewModel}">
+            <UCViews:TreeViewCars/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type UCViewModels:CarDataGridViewModel}">
+            <UCViews:CarDataGrid/>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <ViewModels:AdministrationWindowViewModel/>
+    </Window.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadData}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding TreeViewViewModel}"/>
+        <ContentControl Content="{Binding CarDataGridViewModel}" Grid.Column="1"/>
+    </Grid>
+</Window>

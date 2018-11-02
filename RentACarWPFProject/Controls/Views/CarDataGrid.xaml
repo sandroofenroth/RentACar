@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="RentACarWPFProject.Controls.Views.CarDataGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RentACarWPFProject.Controls.Views"
+             xmlns:vm="clr-namespace:RentACarWPFProject.Controls.ViewModels"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadData}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserResizeColumns="False" ItemsSource="{Binding Cars}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Available"  Binding="{Binding Available}"/>
+                <DataGridTextColumn Header="Rented period" />
+                <DataGridTextColumn Header="Rent a car" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Fuel" Binding="{Binding Fuel}"/>
+                <DataGridTextColumn Header="Fuel consuption" Binding="{Binding FuelConsuption}"/>
+                <DataGridTextColumn Header="Power" Binding="{Binding Power}"/>
+                <DataGridTextColumn Header="Cubic Capacity" Binding="{Binding CubicCapacity}"/>
+                <DataGridTextColumn Header="Image of car"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
