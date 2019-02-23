@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:RentACarWPFProject.Controls.ViewModels"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
-             Background="#2e3137">
+             Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadData}" />
@@ -14,19 +14,20 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <TreeView ItemsSource="{Binding ManufactrerList}" Margin="10,0,10,0" x:Name="tvCars"  Background="#2e3137">
+        <TreeView ItemsSource="{Binding ManufactrerList}" x:Name="tvManufacturersModels" HorizontalContentAlignment="Center">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
-                    <i:InvokeCommandAction Command="{Binding ItemClicked}" CommandParameter="{Binding SelectedItem, ElementName=tvCars}"/>
+                    <i:InvokeCommandAction Command="{Binding ItemClicked}" CommandParameter="{Binding SelectedItem, ElementName=tvManufacturersModels}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Models}" >
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Logo}" Height="12pt"  RenderOptions.BitmapScalingMode="HighQuality"/>
-                        <TextBlock Text="{Binding Name}" />
-                    </StackPanel>
-
+                <HierarchicalDataTemplate ItemsSource="{Binding Models}">
+                    <TextBlock Text="{Binding Name}" Foreground="Red" FontSize="17pt" Typography.Capitals="AllSmallCaps"/>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" FontSize="15pt" Typography.Capitals="AllSmallCaps"/>
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

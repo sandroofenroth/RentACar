@@ -1,6 +1,8 @@
 ﻿using Common.Models;
 using RentACarWPFProject.Commands;
+using RentACarWPFProject.Controls.Views;
 using RentACarWPFProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
@@ -11,7 +13,14 @@ namespace RentACarWPFProject.Controls.ViewModels
     {
 
         private Manufacturer SelectedManufacturer;
+        private Car selectedCar;
         private ICommand loadData;
+
+        public Car SelectedCar
+        {
+            get { return selectedCar; }
+            set { selectedCar = value; OnPropertyChanged("SelectedCar"); }
+        }
 
         public Manufacturer MyProperty
         {
@@ -44,14 +53,19 @@ namespace RentACarWPFProject.Controls.ViewModels
         {
             SelectedModel = e.Model;
             SelectedManufacturer = e.Manufacturer;
-            string message = "Prazno";
-            if (e.Model != null)
-                message = "Naziv selektovanog modela je " + selectedModel.Name;
-            else
-                message = "Naziv selektovanog proizvodjaca je " + SelectedManufacturer.Name;
-            MessageBox.Show(message);
+            //using (var service = new RentACarService.)
+            //{
+            //    if (SelectedModel != null)
+            //    {
+            //        Cars = service.GetCarByModel(SelectedModel);
+            //    }
+            //    else if (SelectedManufacturer != null)
+            //    {
+            //        Cars = service.GetCarByManufacturer(SelectedManufacturer);
+            //    }
+            //}
         }
-        
+
         public ICommand LoadData
         {
             get
@@ -62,16 +76,31 @@ namespace RentACarWPFProject.Controls.ViewModels
 
         private void OnLoadedExecute()
         {
-            using (var wcf = new RentACarServiceReference.Service1Client())
-            {
-                ////var rez = wcf.GetCar(SelectedModel.Id, SelectedManufacturer.Id);
-                //if (SelectedModel.Id != 0 || SelectedManufacturer.Id != 0)
-                //{
-                Cars = wcf.GetCar(1, 1);
-                // }
+            //using (var wcf = new CarCrudServiceReference.CarCrudServiceClient())
+            //{
+            //    Cars = wcf.GetCars();
+            //}
+        }
 
+ 
+
+        public CarDataGrid CarDataGrid
+        {
+            get { return default(CarDataGrid); }
+           
+        }
+
+        protected virtual void OnCarSelected(DataGridItemSelectedEventArgs e)
+        {
+            OnCarSelectedEventHandler handler = CarSelected;
+            if (handler != null)
+            {
+                handler(this, e);
             }
         }
+
+        public event OnCarSelectedEventHandler CarSelected;
     }
 
+    public delegate void OnCarSelectedEventHandler(Object sender, DataGridItemSelectedEventArgs e);
 }

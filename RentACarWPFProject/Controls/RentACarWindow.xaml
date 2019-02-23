@@ -1,0 +1,56 @@
+﻿<Window x:Class="RentACarWPFProject.Controls.RentACarWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RentACarWPFProject.Controls.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             Background="#2e3137"
+             d:DesignHeight="300" d:DesignWidth="400"
+             WindowStyle="None"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center">
+    <Window.DataContext>
+        <local:CarDataGridViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="DataPickerTemplate" TargetType="{x:Type DatePicker}">
+            <Setter Property="Foreground" Value="LightGreen" />
+            <Setter Property="IsTodayHighlighted" Value="True" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="SelectedDateFormat" Value="Short"/>
+            <Setter Property="SelectedDate" Value="{x:Static sys:DateTime.Now}" />
+            <Setter Property="FirstDayOfWeek" Value="Monday"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Label Content="Pickup location:" Grid.Column="1" Grid.Row="1" FontSize="16" Foreground="LightGreen"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding Path=Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  FontSize="16" Foreground="LightGreen" MinWidth="150"/>
+        <Label Content="Pickup date:" Grid.Column="1" Grid.Row="2" FontSize="16" Foreground="LightGreen"/>
+        <DatePicker Style="{StaticResource DataPickerTemplate}" x:Name="DataPickerTemplate" Grid.Column="2" Grid.Row="2">
+
+        </DatePicker>
+    </Grid>
+   
+</Window>

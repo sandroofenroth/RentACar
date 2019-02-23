@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RentACarWPFProject.App" Collapsed="true">
+    <Position X="2.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.Commands.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\RelayComand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.Controls.ViewModels.CarDataGridViewModel" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABACAAAQAyQAAAAAAAAAAAAQAAAAEAAAAAAAIAA=</HashCode>
+      <FileName>Controls\ViewModels\CarDataGridViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.Controls.ViewModels.TreeViewItemSelectedEventArgs" Collapsed="true">
+    <Position X="11.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Controls\ViewModels\TreeViewItemSelectedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.Controls.ViewModels.TreeViewViewModel" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEgEBACQAAQAkAQCBIAAAAAAAAAEAAAAAAAQAAAIAA=</HashCode>
+      <FileName>Controls\ViewModels\TreeViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.Controls.Views.CarDataGrid" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Views\CarDataGrid.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.Controls.Views.TreeViewCars" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Views\TreeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.Converters.CarTypeToStringConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\CarTypeToStringConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.Enums.CarTypeEnumumeration" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\CarTypeEnumumeration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.Properties.Settings" Collapsed="true">
+    <Position X="4.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.RentACarServiceReference.Service1Client" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DgACJAUAAAEgAAAAAAAAAAAAAAAABAAAAAAQBAAACAA=</HashCode>
+      <FileName>Service References\RentACarServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.ViewModels.AddCarWindowViewModel">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="AddCarWindow" Type="RentACarWPFProject.Views.AddCarWindow">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.234" Y="0.216" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>bQAkoBEChAAwAoAAIFAEBQIAAAUrEAQBCxAAEUwAJBA=</HashCode>
+      <FileName>ViewModels\AddCarWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AddCarWindow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentACarWPFProject.ViewModels.AdministrationWindowViewModel" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAABAARAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AdministrationWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAQAAAAABEAAQABAAEAAACAAAQAgAAEAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACarWPFProject.ViewModels.ViewModelBase">
+    <Position X="5.25" Y="0.5" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="RentACarWPFProject.ViewModels.ViewModelBase.ParameterChange" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\ViewModelBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RentACarWPFProject.Views.AddCarWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAQAAA=</HashCode>
+      <FileName>Views\AddCarWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.Views.AdministrationWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AdministrationWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RentACarWPFProject.Views.LoginWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Common.Models.Car">
+    <Position X="15.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.Models.CarModel">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.Models.Manufacturer">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.Models.Person">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="RentACarWPFProject.RentACarServiceReference.IService1">
+    <Position X="9.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>DgACJAUAAAEgAAAAAAAAAAAAAAAABAAAAAAQBAAACAA=</HashCode>
+      <FileName>Service References\RentACarServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentACarWPFProject.RentACarServiceReference.IService1Channel" Collapsed="true">
+    <Position X="11.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\RentACarServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="RentACarWPFProject.Controls.ViewModels.OnItemSelectedEventHandler" Collapsed="true">
+    <Position X="11.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Controls\ViewModels\TreeViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

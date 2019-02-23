@@ -16,6 +16,5 @@ namespace RentACarWPFProject.Views
             //DataContext = login;
             
         }
-        
     }
 }

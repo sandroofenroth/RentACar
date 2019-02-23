@@ -6,45 +6,81 @@
         xmlns:local="clr-namespace:RentACarWPFProject.Views"
         xmlns:vw ="clr-namespace:RentACarWPFProject.ViewModels"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        Title="Login"
         x:Name="LoginW"
-        Background="#04c582">
-    
+        SizeToContent="WidthAndHeight"
+        Background="#2e3137">
+
     <Window.DataContext>
         <vw:LoginViewModel/>
     </Window.DataContext>
 
-    <Border CornerRadius="20" Margin="20" Background="#2e3137">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="30" />
-            </Grid.RowDefinitions>
+    <Grid>
+        <TabControl>
+            <TabItem Header="LOGIN" Foreground="Yellow" Background="Yellow" >
+                <Grid Background="#2e3137" VerticalAlignment="Top"   >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Name:" FontSize="18" Foreground="Yellow" Background="#2e3137" />
+                    <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Name="txtName" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="Yellow" Background="#545d6a" Width="150"/>
+                    <Label Grid.Column="0" Grid.Row="3" Content="Surname:" FontSize="18" Foreground="Yellow" Background="#2e3137" />
+                    <TextBox Grid.Column="1" Grid.Row="3" Name="txtSurname" Text="{Binding Path=Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="Yellow" Background="#545d6a" Width="150" HorizontalAlignment="Left"/>
+                    <Label Grid.Column="0" Grid.Row="5" Content="Password:" FontSize="18" Foreground="Yellow" Background="#2e3137" />
+                    <TextBox Grid.Column="1" Grid.Row="5" Name="txtPassword"  Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="Yellow" Background="#545d6a" Width="150" HorizontalAlignment="Left"/>
+                    <Button Name="btnLogin" Content="Login" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" Grid.Row="9" Command="{Binding Login, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding ElementName=LoginW}" Width="150" Foreground="Yellow" Background="#545d6a" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="REGISTER" Background="Yellow" Width="Auto" Height="Auto" Foreground="#39ff14" >
+                <Grid Background="Yellow">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Name:" FontSize="18" Foreground="#2e3137" Background="Yellow" />
+                    <TextBox Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Name="txtRegisterName" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="#a4c639" Background="Yellow" Width="150"/>
+                    <Label Grid.Column="3" Grid.Row="1" Content="Surname:" FontSize="18" Foreground="#2e3137" Background="Yellow" />
+                    <TextBox Grid.Column="3" Grid.Row="3" Name="txtRegisterSurname" Text="{Binding Path=Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="#a4c639" Background="Yellow" Width="150" HorizontalAlignment="Left"/>
+                    <Label Grid.Column="0" Grid.Row="5" Content="Password:" FontSize="18" Foreground="#2e3137" Background="Yellow" />
+                    <TextBox Grid.Column="0" Grid.Row="7" Name="txtRegisterPassword"  Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="#2e3137" Background="Yellow" Width="150" HorizontalAlignment="Left"/>
+                    <Label Grid.Column="3" Grid.Row="5" Content="Repeat password:" FontSize="18" Foreground="#2e3137" Background="Yellow" />
+                    <TextBox Grid.Column="3" Grid.Row="7" Name="txtRepeatPassword"  Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="#2e3137" Background="Yellow" Width="150" HorizontalAlignment="Left"/>
+                    <Label Grid.Column="0" Grid.Row="9" Content="Email:" FontSize="18" Foreground="#2e3137" Background="Yellow" />
+                    <TextBox Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="11" Name="txtEmail"  Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="#2e3137" Background="Yellow" Width="350" HorizontalAlignment="Left"/>
+                    <Button Name="btnRegister" Content="Register"  HorizontalAlignment="Left" Grid.Column="3" FontSize="18" Grid.Row="12" Command="{Binding Register, UpdateSourceTrigger=PropertyChanged}" Foreground="#2e3137" Background="Yellow" Width="150" />
+                </Grid>
+            </TabItem>
+        </TabControl>
 
-            <Label Grid.ColumnSpan="2" Grid.Row="1" Content="Welcome" FontSize="25" FontStyle="Italic" Foreground="Bisque" Background="#2e3137" HorizontalAlignment="Center"/>
-            <Label Grid.Column="0" Grid.Row="3" Content="Name:" FontSize="18" Foreground="Bisque" Background="#2e3137" />
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txtName" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="Bisque" Background="#545d6a" Width="150" HorizontalAlignment="Left"/>
-            <Label Grid.Column="0" Grid.Row="5" Content="Surname:" FontSize="18" Foreground="Bisque" Background="#2e3137" />
-            <TextBox Grid.Column="1" Grid.Row="5" Name="txtSurname" Text="{Binding Path=Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="Bisque" Background="#545d6a" Width="150" HorizontalAlignment="Left"/>
-            <Label Grid.Column="0" Grid.Row="7" Content="Password:" FontSize="18" Foreground="Bisque" Background="#2e3137" />
-            <TextBox Grid.Column="1" Grid.Row="7" Name="txtPassword"  Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" Foreground="Bisque" Background="#545d6a" Width="150" HorizontalAlignment="Left"/>
-            <Button Name="btnLogin" Content="Login" Grid.Column="1" Width="150" FontSize="18" Grid.Row="9" Command="{Binding Login, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding ElementName=LoginW}" Foreground="Bisque" Background="#545d6a"/>
-        </Grid>
-    </Border>
+    </Grid>
+
 </Window>

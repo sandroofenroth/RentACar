@@ -11,17 +11,21 @@ using System.Windows.Input;
 
 namespace RentACarWPFProject.ViewModels
 {
-    public class LoginViewModel: ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
         private string name;
         private string surname;
         private string password;
+        private string email;
         private ICommand login;
+        private ICommand register;
 
         public LoginViewModel()
         {
 
         }
+
+        #region Properties
 
         public string Name
         {
@@ -55,10 +59,30 @@ namespace RentACarWPFProject.ViewModels
             }
             set
             {
-                password = value;
+                LoginWindow window = new LoginWindow();
+                if (window.txtRegisterPassword.Text == window.txtRepeatPassword.Text)
+                {
+                    password = value;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password!");
+                }
+               
                 OnPropertyChanged("Password");
             }
         }
+        
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+        #endregion Properties
         #region Commands
 
         public ICommand Login
@@ -73,9 +97,14 @@ namespace RentACarWPFProject.ViewModels
             }
         }
 
+        public LoginWindow LoginWindow
+        {
+            get { return default(LoginWindow); }
+        }
+
         private bool CanLoginExecute(object param)
         {
-            if (Name == null || Surname == null || Password== null)
+            if (Name == null || Surname == null || Password == null)
             {
                 return false;
             }
@@ -84,35 +113,63 @@ namespace RentACarWPFProject.ViewModels
 
         private void LoginExecute(object param)
         {
-            //try
-            //{
-            //    Window loginWindow = (Window)param;
-            //    //using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
-            //    //{
-            //    Person customer = new Person();
-            //    customer.Name = Name;
-            //    customer.Surname = Surname;
-            //    customer.Password = Password;
-            //    //int res = service.Login(customer);
-            //    //if (res == 0)
-            //    //{
-            //    //    MessageBox.Show("Ne postoji korisnik sa unetim podacima!");
-            //    //}
-            //}
-            //        else
-            //        //{
-            //        //    AdministrationWindow mainWindow = new AdministrationWindow();
-            //        //    mainWindow.Show();
-            //        //    loginWindow.Close();
+            try
+            {
+                Window loginWindow = (Window)param;
+                //using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
+                //{
+                //    Person customer = new Person();
+                //    customer.Name = Name;
+                //    customer.Surname = Surname;
+                //    customer.Password = Password;
+                //    int res = service.Login(customer);
+                //    if (res == 0)
+                //    {
+                //        MessageBox.Show("There is no user with data entered!");
+                //    }
 
-            //        //}
-            //   // }
-            //}
-            //catch (Exception)
-            //{
+                //    else
+                //    {
+                //        AdministrationWindow mainWindow = new AdministrationWindow();
+                //        mainWindow.Show();
+                //        loginWindow.Close();
 
-            //    throw;
-            //}
+                //    }
+                //} 
+            }
+
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public ICommand Register
+        {
+            get
+            {
+                return register = new RelayCommand(param => RegisterExecute());
+            }
+        }
+
+
+        private void RegisterExecute()
+        {
+            try
+            {
+            //    using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
+            //    {
+            //        Person person = new Person();
+            //        person.Name = Name;
+            //        person.Surname = Surname;
+            //        person.Password = Password;
+            //    }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         #endregion

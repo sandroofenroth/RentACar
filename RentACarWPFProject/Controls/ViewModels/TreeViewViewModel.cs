@@ -1,9 +1,10 @@
 ﻿using Common.Models;
-using RentACarService;
 using RentACarWPFProject.Commands;
+using RentACarWPFProject.Controls.Views;
 using RentACarWPFProject.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RentACarWPFProject.Controls.ViewModels
@@ -70,8 +71,10 @@ namespace RentACarWPFProject.Controls.ViewModels
 
         private void OnLoadedExecute()
         {
-            Service1 wcf = new Service1();
-            ManufactrerList = wcf.GetManufacturers();
+            //using(RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
+            //{
+            //    ManufactrerList = service.GetManufacturers();
+            //};
         }
 
         public ICommand ItemClicked
@@ -93,28 +96,37 @@ namespace RentACarWPFProject.Controls.ViewModels
 
         private void ItemClickedExecute(Object param)
         {
-            if (param is Manufacturer)
+            try
             {
-                var manufacturer = (Manufacturer)param;
-                SelectedCarModel = null;
-                SelectedManufacturer = manufacturer;
+                if (param is Manufacturer)
+                {
+                    var manufacturer = (Manufacturer)param;
+                    SelectedCarModel = null;
+                    SelectedManufacturer = manufacturer;
 
-                TreeViewItemSelectedEventArgs args = new TreeViewItemSelectedEventArgs();
-                args.Manufacturer = manufacturer;
-                args.Model = null;
-                OnItemSelected(args);
+                    TreeViewItemSelectedEventArgs args = new TreeViewItemSelectedEventArgs();
+                    args.Manufacturer = manufacturer;
+                    args.Model = null;
+                    OnItemSelected(args);
+                }
+                else if (param is CarModel)
+                {
+                    var model = (CarModel)param;
+                    SelectedManufacturer = null;
+                    SelectedCarModel = model;
+
+                    TreeViewItemSelectedEventArgs args = new TreeViewItemSelectedEventArgs();
+                    args.Manufacturer = null;
+                    args.Model = model;
+                    OnItemSelected(args);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var model = (CarModel)param;
-                SelectedManufacturer = null;
-                SelectedCarModel = model;
 
-                TreeViewItemSelectedEventArgs args = new TreeViewItemSelectedEventArgs();
-                args.Manufacturer = null;
-                args.Model = model;
-                OnItemSelected(args);
+                MessageBox.Show($"Invalid treeview item object: {ex.Message}");
             }
+           
         }
 
         protected virtual void OnItemSelected(TreeViewItemSelectedEventArgs e)
@@ -127,6 +139,12 @@ namespace RentACarWPFProject.Controls.ViewModels
         }
 
         public event OnItemSelectedEventHandler ItemSelected;
+
+        public TreeViewCars TreeViewCars
+        {
+            get {return default(TreeViewCars); }
+    
+        }
     }
 
     public delegate void OnItemSelectedEventHandler(Object sender, TreeViewItemSelectedEventArgs e);

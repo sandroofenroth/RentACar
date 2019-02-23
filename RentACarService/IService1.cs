@@ -13,14 +13,14 @@ namespace RentACarService
         [OperationContract]
         int Login(Person person);
 
-        [OperationContract]
-        List<Manufacturer> GetManufacturers();
+        //[OperationContract]
+        //List<Manufacturer> GetManufacturers();
 
         [OperationContract]
         List<CarModel> GetCarModels(int manufacturerId);
 
-        [OperationContract]
-        void AddNewManufacturer(Manufacturer manufacturer);
+        //[OperationContract]
+        //void AddNewManufacturer(Manufacturer manufacturer);
 
         [OperationContract]
         void AddNewModel(CarModel carModel);
@@ -29,7 +29,10 @@ namespace RentACarService
         void AddNewCar(Car car);
 
         [OperationContract]
-        List<Car> GetCar(int carModel_id, int manufacturer_id);
+        List<Car> GetCar();
+
+        [OperationContract]
+        List<Car> GetCarByModel(int idModel);
 
         // TODO: Add your service operations here
     }
@@ -214,7 +217,7 @@ namespace RentACarService
     //    }
 
     //    [DataMember]
-    //    public int IdModels
+    //    public int IdModel
     //    {
     //        get { return idModels; }
     //        set { idModels = value; }

@@ -25,5 +25,11 @@ namespace RentACarWPFProject.Controls.Views
         {
             InitializeComponent();
         }
+
+        private void OpenRentWindow_Click(object sender, RoutedEventArgs e)
+        {
+            RentACarWindow rentACarWindow = new RentACarWindow();
+            rentACarWindow.Show();
+        }
     }
 }

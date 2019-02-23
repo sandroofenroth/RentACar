@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using Common.Models;
+using MahApps.Metro.Controls;
+using Microsoft.Win32;
 using RentACarWPFProject.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,11 +22,24 @@ namespace RentACarWPFProject.Views
     /// <summary>
     /// Interaction logic for AddCarWindow.xaml
     /// </summary>
-    public partial class AddCarWindow : Window
-    {
+    public partial class AddCarWindow : MetroWindow
+    {    
         public AddCarWindow()
         {
             InitializeComponent();
+        }
+
+        public AddCarWindow(Car car)
+        {
+            InitializeComponent();
+            ((AddCarWindowViewModel)DataContext).Editing = true;
+            ((AddCarWindowViewModel)DataContext).Car = car;
+        }
+
+        public AddCarWindowViewModel AddCarWindowViewModel
+        {
+            get { return default(AddCarWindowViewModel); }
+
         }
 
         private void Button_Click_AddNewManufacturer(object sender, RoutedEventArgs e)

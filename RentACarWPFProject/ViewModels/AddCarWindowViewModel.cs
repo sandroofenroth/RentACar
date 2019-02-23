@@ -1,16 +1,13 @@
-﻿using Microsoft.Win32;
+﻿using Common.Models;
+using Microsoft.Win32;
 using RentACarWPFProject.Commands;
 using RentACarWPFProject.Enums;
 using RentACarWPFProject.Views;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Common.Models;
 using static RentACarWPFProject.Enums.CarTypeEnumumeration;
 
 namespace RentACarWPFProject.ViewModels
@@ -36,8 +33,14 @@ namespace RentACarWPFProject.ViewModels
         private int power;
         private ICommand addNewCar;
         private int kilometers;
-        private List<CarTypeEnum> cartypeEnumList;
+        private readonly List<CarTypeEnum> cartypeEnumList;
         private string cartype;
+        private string town;
+        private int id;
+        //Determines if the window is editing or adding a car do the database
+        public bool Editing { get; set; }
+        //Car that is about to be edited
+        public Car Car { get; set; }
 
         public AddCarWindowViewModel()
         {
@@ -46,6 +49,12 @@ namespace RentACarWPFProject.ViewModels
         }
 
         #region Properties
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         public List<Manufacturer> ManufactrerList
         {
@@ -82,7 +91,7 @@ namespace RentACarWPFProject.ViewModels
             set
             {
                 selectedCarModel = value;
-                OnPropertyChanged("SelectedManufacturer");
+                OnPropertyChanged("SelectedCarModel");
             }
         }
 
@@ -228,6 +237,19 @@ namespace RentACarWPFProject.ViewModels
                 OnPropertyChanged("Cartype");
             }
         }
+
+        public string Town
+        {
+            get
+            {
+                return town;
+            }
+            set
+            {
+                town = value;
+                OnParameterChange("Town");
+            }
+        }
         #endregion
 
         #region ICommand 
@@ -244,7 +266,31 @@ namespace RentACarWPFProject.ViewModels
         {
             get
             {
-                return loadData = new RelayCommand(param => manufacturerSelectedExecute());
+                return loadData = new RelayCommand(param => LoadDataExecute());
+            }
+        }
+
+        private void LoadDataExecute()
+        {
+            getManufacturers();
+            if (Editing)
+            {
+                CarImage = Car.Image;
+                Cartype = Car.Type;
+                CubicCapacity = Car.CubicCapacity;
+                Fuel = Car.Fuel;
+                FuelConsuption = (float)Car.FuelConsuption;
+                Kilometers = Car.Kilometers;
+                Power = Car.Power;
+                Id = Car.Id;
+                SelectedCarModel = (from manufacturer in ManufactrerList
+                                    from model in manufacturer.Models
+                                    where model.Id == Car.IdModel
+                                    select model).First();
+                SelectedManufacturer = (from manufacturer in ManufactrerList
+                                        from model in manufacturer.Models
+                                        where model.Id == Car.IdModel
+                                        select manufacturer).First();
             }
         }
 
@@ -281,35 +327,45 @@ namespace RentACarWPFProject.ViewModels
             }
         }
 
+        public AddCarWindow AddCarWindow
+        {
+            get { return default(AddCarWindow); }
+
+        }
+
         #endregion
 
         #region Methods
 
         private void ManufacturerSelectedExecute()
         {
-            MessageBox.Show("Pusi kurac");
         }
 
-        private void manufacturerSelectedExecute()
+        private void getManufacturers()
         {
-            using (RentACarServiceReference.Service1Client wcf = new RentACarServiceReference.Service1Client())
-            {
-                ManufactrerList = wcf.GetManufacturers();
-            };
+            //ChannelFactory<IManucaturer>
+            //using (ManufacturerService.ManufacturerServiceClient wcf = new ManufacturerService.ManufacturerServiceClient())
+            //{
+            //    ManufactrerList = wcf.GetManufacturers();
+            //};
         }
 
-
+        ///<summary>method <c>AddNewManufacturerExecute</c> inserts a new manufacturer entry via the wcf service into the database.</summary>
         private void AddNewManufacturerExecute()
         {
-            using (RentACarServiceReference.Service1Client wcf = new RentACarServiceReference.Service1Client())
-            {
-                Manufacturer manufactrer = new Manufacturer();
+            //using (RentACarServiceReference.Service1Client wcf = new RentACarServiceReference.Service1Client())
+            //{
+            //    Manufacturer manufactrer = new Manufacturer()
+            //    {
+            //        Name = ManufacturerName,
+            //        Logo = ManufacturerLogoImage
+            //    };
 
-                wcf.AddNewManufacturer(manufactrer);
-                manufacturerSelectedExecute();
-                AddCarWindow acw = new AddCarWindow();
-                acw.grpAddManufacturer.Visibility = Visibility.Collapsed;
-            }
+            //    wcf.AddNewManufacturer(manufactrer);
+            //    getManufacturers();
+            //    //AddCarWindow acw = new AddCarWindow();
+            //    //acw.grpAddManufacturer.Visibility = Visibility.Collapsed;
+            //}
         }
 
         private void AddNewImageExecute(object param)
@@ -340,35 +396,47 @@ namespace RentACarWPFProject.ViewModels
 
         private void AddNewModelExecute()
         {
-            using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
-            {
-                CarModel carModel = new CarModel();
-                carModel.Name = ModelName;
-                carModel.Year = Year;
-                carModel.ManufacturerId = SelectedManufacturer.Id;
-                service.AddNewModel(carModel);
-                manufacturerSelectedExecute();
-                AddCarWindow acw = new AddCarWindow();
-                acw.grpModel.Visibility = Visibility.Collapsed;
-           }
+            //using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
+            //{
+            //    CarModel carModel = new CarModel();
+            //    carModel.Name = ModelName;
+            //    carModel.Year = Year;
+            //    carModel.ManufacturerId = SelectedManufacturer.Id;
+            //    service.AddNewModel(carModel);
+            //    getManufacturers();
+            //    AddCarWindow acw = new AddCarWindow();
+            //    acw.grpModel.Visibility = Visibility.Collapsed;
+            //}
         }
 
         private void AddNewCarExecute()
         {
-            using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
+            Car car = new Car();
+            car.Available = true;
+            car.Image = CarImage;
+            car.TotalRentals = 0;
+            car.CubicCapacity = CubicCapacity;
+            car.Fuel = Fuel;
+            car.FuelConsuption = FuelConsuption;
+            car.Power = Power;
+            car.IdModel = SelectedCarModel.Id;
+            car.Type = Cartype;
+            car.Kilometers = Kilometers;
+            car.Town = Town;
+            if (Editing)
             {
-                Car car = new Car();
-                car.Available = true;
-                car.Image = CarImage;
-                car.TotalRentals = 0;
-                car.CubicCapacity = CubicCapacity;
-                car.Fuel = Fuel;
-                car.FuelConsuption = FuelConsuption;
-                car.Power = Power;
-                car.IdModels = SelectedCarModel.Id;
-                car.Type = Cartype;
-                car.Kilometers = Kilometers;
-                service.AddNewCar(car);
+                car.Id = Id;
+                //using (var service = new CarCrudServiceReference.CarCrudServiceClient())
+                //{
+                //    service.UpdateCar(car);
+                //}
+            }
+            else
+            {
+                //using (RentACarServiceReference.Service1Client service = new RentACarServiceReference.Service1Client())
+                //{
+                //    service.AddNewCar(car);
+                //}
             }
         }
         #endregion

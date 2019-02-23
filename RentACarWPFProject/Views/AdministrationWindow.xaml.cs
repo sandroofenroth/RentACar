@@ -1,4 +1,5 @@
-﻿using RentACarWPFProject.Controls.ViewModels;
+﻿using MahApps.Metro.Controls;
+using RentACarWPFProject.Controls.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace RentACarWPFProject.Views
     /// <summary>
     /// Interaction logic for AdministrationWindow.xaml
     /// </summary>
-    public partial class AdministrationWindow : Window
+    public partial class AdministrationWindow : MetroWindow
     {
         public AdministrationWindow()
         {
