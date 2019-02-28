@@ -50,13 +50,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImplementationClasses\VehicleService.cs" />
+    <Compile Include="Services\VehicleService.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Interfaces\IVehicleService.cs" />
-    <Compile Include="Interfaces\IManufacturerService.cs" />
-    <Compile Include="Interfaces\IModelService.cs" />
-    <Compile Include="ImplementationClasses\ManufacturerService.cs" />
-    <Compile Include="ImplementationClasses\ModelService.cs" />
+    <Compile Include="ServiceContracts\IVehicleService.cs" />
+    <Compile Include="ServiceContracts\IManufacturerService.cs" />
+    <Compile Include="ServiceContracts\IModelService.cs" />
+    <Compile Include="Services\ManufacturerService.cs" />
+    <Compile Include="Services\ModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
